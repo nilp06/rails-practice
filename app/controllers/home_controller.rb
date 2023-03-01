@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+    layout 'master'
     def index
         @name="Nil Patel"
         @college="LD Colleg of Engineering"

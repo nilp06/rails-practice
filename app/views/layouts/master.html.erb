@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  <h1>Master Layout's Header</h1>
   <body>
     <%= yield %>
+  <h2>Master Layout's Footer</h2>
   </body>
 </html>
