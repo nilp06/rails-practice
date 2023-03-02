@@ -1,0 +1,31 @@
+<h1 class="text-center"> Products</h1>
+<div class="container text-center">
+  <table class="table table-secondary">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <td>
+        <a href="../products/<%= product.id %>"><%= product.name %></a>
+      </td> 
+      <td><%= product.price  %></td>
+      <td><%= product.category %></td>
+      <td><a href="../products/<%= product.id%>/edit" class="btn btn-primary" >Edit</a></td>
+      <td><%= link_to "Delete", product_path(product), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"}%>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<a href="products/new" class="btn btn-primary" >Add Product</a>
+</div>
