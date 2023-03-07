@@ -1,0 +1,40 @@
+<h1 class="text-center">Book</h1>
+<div class="container text-center">
+<table class="table table-secondary">
+  <tbody>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col"><%= @book.id %></th>
+    </tr>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col"><%= @book.name %></th>
+    </tr>
+    <tr>
+      <th scope="col">Price</th>
+      <th scope="col"><%= @book.price %></th>
+    </tr>
+    <tr>
+      <th scope="col">Author.id</th>
+      <th scope="col"><%= @book.author.id %></th>
+    </tr>
+    <tr>
+      <th scope="col">Author's First Name</th>
+      <th scope="col"><%= @book.author.first_name %></th>
+    </tr>
+    <tr>
+      <th scope="col">Author's Last Name</th>
+      <th scope="col"><%= @book.author.last_name %></th>
+    </tr>
+    <tr>
+      <th scope="col">Author's Dob</th>
+      <th scope="col"><%= @book.author.dob %></th>
+    </tr>
+    <tr>
+      <th scope="col">Author's Email</th>
+      <th scope="col"><%= @book.author.email %></th>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "All Books", books_path,class: 'btn btn-primary m-3'%>
+</div>

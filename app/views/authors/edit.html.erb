@@ -1,0 +1,22 @@
+<h1 class="text-center"> Edit Author</h1>
+<div class="container">
+  <%= form_with model: @author do |form| %>
+  <div class="mb-3">
+    <%= form.label :first_name, class: "form-label" %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "Enter First Name"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :last_name, class: "form-label" %>
+    <%= form.text_field :last_name,class: "form-control", placeholder: "Enter Last Name" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email ,  class: "form-control", placeholder: "Enter Email ID"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :dob, class: "form-label" %>
+    <%= form.date_field :dob,  class: "form-control", placeholder: "Enter DOB"  %>
+  </div>
+  <%= form.submit class:"btn btn-primary text-center"%>
+<% end %>
+</div>

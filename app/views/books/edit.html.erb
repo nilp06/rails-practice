@@ -1,0 +1,18 @@
+<h1 class="text-center">Edit Book</h1>
+<div class="container">
+  <%= form_with model: @book do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter Name"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :price, class: "form-label" %>
+    <%= form.number_field :price,class: "form-control", placeholder: "Enter Price" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :author_id, class: "form-label" %>
+    <%= form.number_field :author_id,  class: "form-control", placeholder: "Enter Author ID"  %>
+  </div>
+  <%= form.submit class:"btn btn-primary"%>
+<% end %>
+</div>

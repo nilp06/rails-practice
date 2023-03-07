@@ -1,0 +1,45 @@
+<h1 class="text-center">Author</h1>
+<div class="container text-center">
+<table class="table table-secondary">
+  <tbody>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col"><%= @author.id %></th>
+    </tr>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col"><%= @author.first_name %></th>
+    </tr>
+    <tr>
+      <th scope="col">Last Name</th>
+      <th scope="col"><%= @author.last_name %></th>
+    </tr>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col"><%= @author.email %></th>
+    </tr>
+    <tr>
+      <th scope="col">Date of Birth</th>
+      <th scope="col"><%= @author.dob %></th>
+    </tr>
+    </tbody>
+</table>
+<h1 class="text-center">Books</h1> 
+<table class="table table-info table-bordered">
+<tbody>
+<tr>
+      <th scope="col">Book Id</th>
+      <th scope="col">Name</th>
+</tr>
+<% @author.books.each do |book| %>
+
+    <tr>
+      <th scope="col"><%= book.id %></th>
+      <th scope="col"><%= link_to book.name ,book_path(book)%></th>
+    </tr>
+
+<% end %>
+</tbody>
+</table>
+<%= link_to "All Authors", authors_path,class: 'btn btn-primary m-3'%>
+</div>
