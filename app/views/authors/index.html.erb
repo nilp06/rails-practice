@@ -14,20 +14,20 @@
   </thead>
   <tbody>
     <% @authors.each do |author| %>
-    <tr>
-      <td><%= author.id  %></td>
-      <td>
-        <%= link_to author.first_name, author_path(author)%>
-      </td> 
-      <td><%= author.last_name  %></td>
-      <td><%= author.email  %></td>
-      <td><%= author.dob  %></td>
-      <td><%= link_to "Edit", edit_author_path(author),class: 'btn btn-primary'%></td>
-      <td><%= link_to "Delete", author_path(author), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"},class: 'btn btn-primary'%>
-      </td>
-    </tr>
+      <tr>
+        <td><%= author.id  %></td>
+        <td>
+          <%= link_to author.first_name, author_path(author)%>
+        </td> 
+        <td><%= author.last_name  %></td>
+        <td><%= author.email  %></td>
+        <td><%= author.date_of_birth  %></td>
+        <td><%= link_to "Edit", edit_author_path(author),class: 'btn btn-primary'%></td>
+        <td><%= link_to "Delete", author_path(author), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"},class: 'btn btn-primary'%>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>

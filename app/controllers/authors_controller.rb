@@ -14,7 +14,7 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new(author_params)
   
-    if @author.save!
+    if @author.save
       redirect_to @author
     else
       render :new, status: :unprocessable_entity

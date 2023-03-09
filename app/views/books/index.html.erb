@@ -11,17 +11,17 @@
   </thead>
   <tbody>
     <% @books.each do |book| %>
-    <tr>
-      <td>
-        <%= link_to book.name, book_path(book)%>
-      </td> 
-      <td><%= book.price  %></td>
-      <td><%= link_to "Edit", edit_book_path(book),class: 'btn btn-primary'%></td>
-      <td><%= link_to "Delete", book_path(book), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"},class: 'btn btn-primary'%>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <%= link_to book.name, book_path(book)%>
+        </td> 
+        <td><%= book.price  %></td>
+        <td><%= link_to "Edit", edit_book_path(book),class: 'btn btn-primary'%></td>
+        <td><%= link_to "Delete", book_path(book), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"},class: 'btn btn-primary'%>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
