@@ -1,0 +1,40 @@
+<h1 class="text-center">Faculty</h1>
+<div class="container text-center">
+  <table class="table table-secondary">
+    <tbody>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col"><%= @faculty.id %></th>
+      </tr>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col"><%= @faculty.first_name %></th>
+      </tr>
+      <tr>
+        <th scope="col">Last Name</th>
+        <th scope="col"><%= @faculty.last_name %></th>
+      </tr>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col"><%= @faculty.email %></th>
+      </tr>
+      <tr>
+        <th scope="col">Phone Number</th>
+        <th scope="col"><%= @faculty.phone_number %></th>
+      </tr>
+      <tr>
+        <th scope="col">Date of Birth</th>
+        <th scope="col"><%= @faculty.dob %></th>
+      </tr>
+      <tr>
+        <th scope="col">Department</th>
+        <th scope="col"><%= @faculty.department %></th>
+      </tr>
+      <tr>
+        <th scope="col">Designation</th>
+        <th scope="col"><%= @faculty.designation %></th>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to "All faculties", faculties_path,class: 'btn btn-primary m-3'%>
+</div>
