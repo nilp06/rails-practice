@@ -5,7 +5,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">First Name</th>
-        <th scope="col">Last_Name</th>
+        <th scope="col">Last Name</th>
         <th scope="col">Birth Date</th>
         <th scope="Delete">Email</th>
         <th scope="col">Edit</th>
@@ -20,8 +20,8 @@
             <%= link_to faculty.first_name, faculty_path(faculty)%>
           </td> 
           <td><%= faculty.last_name  %></td>
-          <td><%= faculty.email  %></td>
           <td><%= faculty.dob  %></td>
+          <td><%= faculty.email  %></td>
           <td><%= link_to "Edit", edit_faculty_path(faculty),class: 'btn btn-warning'%></td>
           <td><%= link_to "Delete", faculty_path(faculty), data: {
                         turbo_method: :delete,
