@@ -1,6 +1,6 @@
 <%= form_with model: faculty do |form| %>
-  <% if faculty.errors.any? %> 
-   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <% if faculty.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <strong><%= pluralize(@faculty.errors.count, "error") %> found.</strong>
       <ul>
         <% faculty.errors.each do |error| %>
@@ -34,11 +34,11 @@
   </div>
   <div class="mb-3">
     <%= form.label :department, class: "form-label" %>
-     <%= form.select :department, FacultiesHelper::DepartmentChoices, {}, class: "form-select" %>
+    <%= form.select :department, FacultiesHelper::DepartmentChoices, {}, class: "form-select" %>
   </div>
   <div class="mb-3">
     <%= form.label :designation, class: "form-label" %>
-    <%= form.select :designation, FacultiesHelper::DesignationChoices, {}, class: "form-select" %> 
+    <%= form.select :designation, FacultiesHelper::DesignationChoices, {}, class: "form-select" %>
   </div>
   <%= form.submit class:"btn btn-primary text-center"%>
 <% end %>
