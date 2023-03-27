@@ -1,9 +1,17 @@
 class CarsController < ApplicationController
-  before_action :authenticate_user, except: [:search]
+  before_action :authenticate_user, only: %i[edit update destroy], except: [:search]
 
   def search
     @cars = Car.where(name: params[:query])
-    # binding.pry
+  end
+
+  def download
+    pdf = Prawn::Document.new
+    @cars = Car.all
+    @cars.each do |car|
+      pdf.text "#{car.name} - #{car.company} - #{car.price}"
+    end
+    send_data(pdf.render, filename: 'data.pdf', type: 'application/pdf')
   end
 
   def index
@@ -48,8 +56,6 @@ class CarsController < ApplicationController
 
     redirect_to cars_path, status: :see_other
   end
-
-  private
 
   def car_params
     params.require(:car).permit(:name, :company, :price)
