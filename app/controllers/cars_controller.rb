@@ -1,5 +1,10 @@
 class CarsController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: [:search]
+
+  def search
+    @cars = Car.where(name: params[:query])
+    # binding.pry
+  end
 
   def index
     @cars = Car.all

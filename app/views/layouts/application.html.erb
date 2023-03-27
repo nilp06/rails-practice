@@ -12,7 +12,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Action Controller Overview</a>
+        <%= link_to "Action Controller Overview", root_path, class: "navbar-brand"%>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,11 +34,11 @@
               <%= link_to "Cars", cars_path, class: "nav-link" %>
             </li>
           </ul>
-          <% if user_signed_in? %>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+          <% if !user_signed_in? %>
+            <%= form_with url: search_path,class:"d-flex",method: :get do |form| %>
+              <%= form.text_field :query , class: "form-control me-2", placeholder:"Search" %>
+              <%= form.submit "Search", class: "btn btn-outline-success"%>
+            <% end %>
           <% end %>
         </div>
       </div>
