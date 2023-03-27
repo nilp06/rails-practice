@@ -1,0 +1,28 @@
+<%= form_with model: car do |form| %>
+  <% if car.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong><%= pluralize(@car.errors.count, "error") %> found.</strong>
+      <ul>
+        <% car.errors.each do |error| %>
+          <li>
+            <%= error.full_message %>
+          </li>
+        <% end %>
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter Name of Car"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :company, class: "form-label" %>
+    <%= form.text_field :company,class: "form-control", placeholder: "Enter Company of Car" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :price, class: "form-label" %>
+    <%= form.number_field :price ,  class: "form-control", placeholder: "Enter Email ID"  %>
+  </div>
+  <%= form.submit class:"btn btn-primary text-center"%>
+<% end %>
