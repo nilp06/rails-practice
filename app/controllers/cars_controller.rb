@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   before_action :authenticate_user, only: %i[edit update destroy], except: [:search]
-  # http_basic_authenticate_with name: 'dhh', password: 'secret', except: :index
+  http_basic_authenticate_with name: 'dhh', password: 'secret', except: :index
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def search
