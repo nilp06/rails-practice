@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       # binding.pry
       session[:user_id] = @user.id
-
+      cookies[:user_id] = @user.email
       redirect_to root_path, flash: { success: 'Registration successfully' }
     else
       render :new

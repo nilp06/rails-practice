@@ -44,6 +44,10 @@
       </div>
     </nav>
     <div class="container">
+      <% if user_signed_in? %>
+        <h1> welcome <%= cookies[:user_id]%></h1>
+      <% end %>
+      <h1></h1>
       <% if flash.any? %>
         <% flash.each do |name, msg| -%>
           <div class="alert alert-<%= name %> alert-dismissible fade show" role="alert">

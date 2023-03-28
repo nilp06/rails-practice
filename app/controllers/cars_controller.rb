@@ -1,5 +1,7 @@
 class CarsController < ApplicationController
   before_action :authenticate_user, only: %i[edit update destroy], except: [:search]
+  # http_basic_authenticate_with name: 'dhh', password: 'secret', except: :index
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def search
     @cars = Car.where(name: params[:query])
@@ -53,9 +55,14 @@ class CarsController < ApplicationController
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
-
     redirect_to cars_path, status: :see_other
   end
+
+  def record_not_found
+    render 'error'
+  end
+
+  private
 
   def car_params
     params.require(:car).permit(:name, :company, :price)

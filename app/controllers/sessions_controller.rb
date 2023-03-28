@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
     if @user.present? && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
+      cookies[:user_id] = @user.email
       redirect_to root_path, flash: { success: 'Logged in successfully' }
     else
       flash[:danger] = 'Email or password is invalid.'
@@ -16,7 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session.delete(:user_id)
+    cookies.delete(:user_id)
     redirect_to root_path, flash: { success: 'Logged Out' }
   end
 end
