@@ -1,4 +1,4 @@
-<h1 class="text-center">All Events</h1>
+<h1 class="text-center">Your Events</h1>
 <div class="container text-center">
   <table class="table table-hover table-striped">
     <thead>
@@ -9,13 +9,10 @@
         <th scope="col">Event Date</th>
         <th scope="col">Edit</th>
         <th scope="Delete">Delete</th>
-        <% if user_signed_in? %>
-          <th>Enroll</th>
-        <% end %>
       </tr>
     </thead>
     <tbody>
-      <% @events.each do |event| %>
+      <% current_user.events.each do |event| %>
         <tr>
           <td><%= event.id  %></td>
           <td>
@@ -28,9 +25,6 @@
                         turbo_method: :delete, 
                         turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
           </td>
-          <% if user_signed_in? %>
-            <td><%= link_to "Enroll", events_enroll_path(event), class: 'btn btn-info'%></td>
-          <% end %>
         </tr>
       <% end %>
     </tbody>

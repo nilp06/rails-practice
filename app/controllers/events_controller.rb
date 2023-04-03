@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
-    @events = Event.all
+    @events = Event.all.order(id: :desc)
   end
 
   def show
@@ -43,6 +43,19 @@ class EventsController < ApplicationController
     @event.destroy
 
     redirect_to events_path, status: :see_other
+  end
+
+  def enroll
+    @event = Event.find(params[:id])
+    @event.users << current_user
+    @event.save
+    flash[:success] = 'Successfully Enrolled in Event.'
+
+    redirect_to events_path
+  end
+
+  def currentuser_event
+    render 'currentuser_events'
   end
 
   def record_not_found
