@@ -1,20 +1,34 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user
+  before_action :check_user
+
   def edit
-    @profile = Profile.find_by(user_id: current_user.id)
+    @profile = Profile.find(params[:id])
   end
 
   def update
-    @profile = Event.find(params[:id])
+    @profile = Profile.find(params[:id])
 
-    if @profile.update(event_params)
+    if @profile.update(profile_params)
       redirect_to @profile
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, flash: { danger: 'Something went wrong.' }, status: :unprocessable_entity
     end
   end
 
   def show
-    @profile = Profile.find_by(user_id: current_user.id)
+    @enrollments = current_user.enrollments
+    @profile = Profile.find(params[:id])
+  end
+
+  private
+
+  def check_user
+    return unless params[:id].to_i != current_user.profile.id
+
+    redirect_to root_path, flash: { danger: 'You have not access to this page.' }
+  end
+
+  def profile_params
+    params.require(:profile).permit(:name, :email, :dob, :bio)
   end
 end

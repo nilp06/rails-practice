@@ -3,6 +3,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
   validates :password, confirmation: true
   has_many :enrollments
-  has_many :events, through: :enrollments
+  has_many :events, through: :enrollments, dependent: :destroy
   has_one :profile
 end

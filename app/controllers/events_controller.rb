@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user, except: [:index]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
@@ -16,8 +15,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-
+    @event.owner_name = current_user.name
     if @event.save
+      enrollment = Enrollment.new(user_id: current_user.id, event_id: @event.id, is_owner: true)
+      enrollment.save
       redirect_to @event
     else
       render :new, status: :unprocessable_entity
@@ -46,16 +47,22 @@ class EventsController < ApplicationController
   end
 
   def enroll
-    @event = Event.find(params[:id])
-    @event.users << current_user
-    @event.save
-    flash[:success] = 'Successfully Enrolled in Event.'
-
+    @enroll = Enrollment.new(user_id: current_user.id, event_id: params[:id], is_owner: false)
+    if !Enrollment.where(user_id: current_user.id, event_id: params[:id]).present? && @enroll.save
+      flash[:success] = 'Successfully Enrolled in Event.'
+    else
+      flash[:danger] = 'You already enrolled in this Event.'
+    end
     redirect_to events_path
   end
 
   def currentuser_event
+    @enrollments = current_user.enrollments.where(is_owner: true)
     render 'currentuser_events'
+  end
+
+  def enrollments
+    @enrollments = current_user.enrollments
   end
 
   def record_not_found

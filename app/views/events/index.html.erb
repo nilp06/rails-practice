@@ -4,11 +4,10 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
+        <th scope="col">Owner Name</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
         <th scope="col">Event Date</th>
-        <th scope="col">Edit</th>
-        <th scope="Delete">Delete</th>
         <% if user_signed_in? %>
           <th>Enroll</th>
         <% end %>
@@ -18,16 +17,12 @@
       <% @events.each do |event| %>
         <tr>
           <td><%= event.id  %></td>
+          <td><%= event.owner_name %></td>
           <td>
             <%= link_to event.name, event_path(event)%>
           </td>
           <td><%= event.description  %></td>
           <td><%= event.event_date  %></td>
-          <td><%= link_to "Edit", edit_event_path(event), class: 'btn btn-warning'%></td>
-          <td><%= link_to "Delete", event_path(event), data: {
-                        turbo_method: :delete, 
-                        turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
-          </td>
           <% if user_signed_in? %>
             <td><%= link_to "Enroll", events_enroll_path(event), class: 'btn btn-info'%></td>
           <% end %>

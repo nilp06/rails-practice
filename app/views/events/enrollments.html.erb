@@ -1,0 +1,24 @@
+<h1 class="text-center">Your Events</h1>
+<div class="container text-center">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Event Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @enrollments.each do |e| %>
+        <tr>
+          <td><%= e.event.id %></td>
+          <td><%= e.event.name, event_path(e.event)%></td>
+          <td><%= e.event.description %></td>
+          <td><%= e.event.event_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Add Event", new_event_path(), class: 'btn btn-primary'%>
+</div>

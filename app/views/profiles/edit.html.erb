@@ -23,14 +23,12 @@
       <%= form.text_field :email, class: "form-control", placeholder: "Enter Email" %>
     </div>
     <div class="mb-3">
+      <%= form.label :bio, class: "form-label" %>
+      <%= form.text_area :bio, class: "form-control", placeholder: "Enter bio" %>
     </div>
     <div class="mb-3">
       <%= form.label :dob,"Date of Birth", class: "form-label" %>
-      <%= form.date_field :dob, class: "form-control", placeholder: "Enter Event Date"  %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :@profile_date, class: "form-label" %>
-      <%= form.date_field :@profile_date, class: "form-control", placeholder: "Enter Event Date"  %>
+      <%= form.date_field :dob, class: "form-control", placeholder: "Enter Birth Date"  %>
     </div>
     <%= form.submit class:"btn btn-primary text-center"%>
   <% end %>

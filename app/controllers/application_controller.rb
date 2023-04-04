@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user
   helper_method :current_user
   helper_method :user_signed_in?
 
@@ -11,6 +12,13 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    redirect_to new_session_path, flash: { danger: 'You must be logged in.' } if current_user.nil?
+    return unless current_user.nil?
+
+    flash[:danger] = 'You must be logged in.'
+    redirect_to new_session_path
+  end
+
+  def redirect_if_authenticated
+    redirect_to root_path, flash: { info: 'You are already logged in.' } if user_signed_in?
   end
 end

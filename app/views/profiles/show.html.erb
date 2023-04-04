@@ -1,0 +1,45 @@
+<div class="container text-center">
+  <h1>Your Profile</h1>
+  <table class="table table-secondary">
+    <tbody>
+      <tr>
+        <td scope="col">Name</td>
+        <td scope="col"><%= @profile.name %></td>
+      </tr>
+      <tr>
+        <td scope="col">Email</td>
+        <td scope="col"><%= @profile.email %></td>
+      </tr>
+      <tr>
+        <td scope="col">Bio</td>
+        <td scope="col"><%= @profile.bio %></td>
+      </tr>
+      <tr>
+        <td scope="col">Date of Birth</td>
+        <td scope="col"><%= @profile.dob %></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Your Enrollments</h2>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Event Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @enrollments.each do |e| %>
+        <tr>
+          <td><%= e.event.id %></td>
+          <td><%= e.event.name %></td>
+          <td><%= e.event.description %></td>
+          <td><%= e.event.event_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Edit Profile", edit_profile_path(@profile.id), class: 'btn btn-primary m-3'%>
+</div>
