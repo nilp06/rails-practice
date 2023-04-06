@@ -18,6 +18,7 @@ class ProfilesController < ApplicationController
   def show
     @enrollments = current_user.enrollments
     @profile = Profile.find(params[:id])
+    @address = Address.find_by(user_id: current_user.id)
   end
 
   private

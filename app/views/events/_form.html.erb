@@ -24,5 +24,9 @@
     <%= form.label :event_date, class: "form-label" %>
     <%= form.date_field :event_date, class: "form-control", placeholder: "Enter Event Date"  %>
   </div>
-  <%= form.submit class:"btn btn-primary text-center"%>
+  <div class="mb-3">
+    <%= form.label :category, class: "form-label" %>
+    <%= form.collection_select :category_id, Category.order(:id), :id, :name,{} ,class: "form-select" %>
+  </div>
+  <%= form.submit class:"btn btn-primary text-center" %>
 <% end %>

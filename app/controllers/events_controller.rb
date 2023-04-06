@@ -69,9 +69,14 @@ class EventsController < ApplicationController
     render 'error'
   end
 
+  def filter
+    puts "-------#{params[:id]}--------"
+    @events = Event.where(category_id: params[:id])
+  end
+
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :event_date)
+    params.require(:event).permit(:name, :description, :event_date, :category_id)
   end
 end

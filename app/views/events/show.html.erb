@@ -21,6 +21,10 @@
         <th scope="col">Event Date</th>
         <th scope="col"><%= @event.event_date %></th>
       </tr>
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col"><%= @event.category.name %></th>
+      </tr>
     </tbody>
   </table>
   <%= link_to "All Events", events_path, class: 'btn btn-primary m-3'%>

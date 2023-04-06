@@ -7,15 +7,17 @@
         <th scope="col">Name</th>
         <th scope="col">Description</th>
         <th scope="col">Event Date</th>
+        <th scope="col">Category</th>
       </tr>
     </thead>
     <tbody>
       <% @enrollments.each do |e| %>
         <tr>
           <td><%= e.event.id %></td>
-          <td><%= e.event.name, event_path(e.event)%></td>
+          <td><%= e.event.name %></td>
           <td><%= e.event.description %></td>
           <td><%= e.event.event_date %></td>
+          <td><%= e.event.category.name %></td>
         </tr>
       <% end %>
     </tbody>

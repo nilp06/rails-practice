@@ -7,6 +7,7 @@
         <th scope="col">Name</th>
         <th scope="col">Description</th>
         <th scope="col">Event Date</th>
+        <th scope="col">Category</th>
         <th scope="col">Edit</th>
         <th scope="Delete">Delete</th>
       </tr>
@@ -20,6 +21,7 @@
           </td>
           <td><%= e.event.description  %></td>
           <td><%= e.event.event_date  %></td>
+          <td><%= e.event.category.name %></td>
           <td><%= link_to "Edit", edit_event_path(e.event), class: 'btn btn-warning'%></td>
           <td><%= link_to "Delete", event_path(e.event), data: {
                         turbo_method: :delete, 

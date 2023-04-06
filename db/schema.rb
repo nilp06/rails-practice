@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_04_081751) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_06_055416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "line1"
+    t.string "line2"
+    t.string "area"
+    t.string "city"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "enrollments", force: :cascade do |t|
     t.boolean "is_owner"
@@ -31,6 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_04_081751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "owner_name"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
   end
 
   create_table "events_users", id: false, force: :cascade do |t|
@@ -57,7 +77,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_04_081751) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "enrollments", "events"
   add_foreign_key "enrollments", "users"
+  add_foreign_key "events", "categories"
   add_foreign_key "profiles", "users"
 end

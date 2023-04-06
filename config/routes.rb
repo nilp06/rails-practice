@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
   get 'currentuser/event', to: 'events#currentuser_event', as: 'currentuser_event'
   get 'currentuser/enrolled', to: 'events#enrollments', as: 'enrolled_event'
+  get 'event/filter/category', to: 'events#filter', as: 'event_filter'
   root 'home#index'
 end
