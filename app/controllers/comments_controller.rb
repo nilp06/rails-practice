@@ -16,8 +16,4 @@ class CommentsController < ApplicationController
       redirect_to action: new, flash: { danger: 'Something went wrong here.' }
     end
   end
-
-  # def edit
-  #   @comment = Comment.new
-  # end
 end

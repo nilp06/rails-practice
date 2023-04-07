@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get 'comment/likes/:id', to: 'likes#index', as: 'all_likes'
   get 'comment/like/add/:id', to: 'likes#add', as: 'add_like'
   root 'home#index'
+  get 'addresses/new', to: 'addresses#new', as: 'new_address'
+  post 'addresses/create', to: 'addresses#create', as: 'add_address'
 end

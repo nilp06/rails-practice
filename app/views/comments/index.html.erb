@@ -42,7 +42,7 @@
         <tr>
           <td><%= comment.user.name  %></td>
           <td><%= comment.message %></td>
-          <td><%= link_to "Likes", all_likes_path(comment), class:"btn btn-danger" %></td>
+          <td><%= link_to "Like", add_like_path(comment), class:"btn btn-danger me-1" %><%= link_to "All Like", all_likes_path(comment), class:"btn btn-danger ml-1" %></td>
         </tr>
       <% end %>
     </tbody>

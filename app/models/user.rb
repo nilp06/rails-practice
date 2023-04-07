@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true
   has_many :enrollments
   has_many :events, through: :enrollments, dependent: :destroy
-  has_one :profile
+  has_one :profile, dependent: :destroy
   has_one :address, as: :addressable
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
