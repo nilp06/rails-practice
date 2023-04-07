@@ -1,6 +1,4 @@
 class EventsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
   def index
     @events = Event.all.order(id: :desc)
   end
@@ -65,12 +63,7 @@ class EventsController < ApplicationController
     @enrollments = current_user.enrollments
   end
 
-  def record_not_found
-    render 'error'
-  end
-
   def filter
-    puts "-------#{params[:id]}--------"
     @events = Event.where(category_id: params[:id])
   end
 

@@ -10,6 +10,7 @@
         <th scope="col">Description</th>
         <th scope="col">Event Date</th>
         <th scope="col">Category</th>
+        <th comments="col">Comments</th>
         <% if user_signed_in? %>
           <th>Enroll</th>
         <% end %>
@@ -26,6 +27,7 @@
           <td><%= event.description  %></td>
           <td><%= event.event_date  %></td>
           <td><%= event.category.name %></td>
+          <td><%= link_to "Comments", all_comments_path(event), class:"btn btn-info" %></td>
           <% if user_signed_in? %>
             <td><%= link_to "Enroll", events_enroll_path(event), class: 'btn btn-info'%></td>
           <% end %>

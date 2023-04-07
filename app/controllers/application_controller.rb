@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user
   helper_method :current_user
   helper_method :user_signed_in?
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def current_user
     @current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
@@ -20,5 +21,9 @@ class ApplicationController < ActionController::Base
 
   def redirect_if_authenticated
     redirect_to root_path, flash: { info: 'You are already logged in.' } if user_signed_in?
+  end
+
+  def record_not_found
+    render 'events/error'
   end
 end

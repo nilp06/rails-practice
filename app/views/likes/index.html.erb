@@ -1,0 +1,37 @@
+<div class="container text-center">
+  <h2>Comment</h2>
+  <table class="table table-secondary mb-5">
+    <tbody>
+      <tr>
+        <th scope="col">Event</th>
+        <th scope="col"><%= @comment.event.name %></th>
+      </tr>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col"><%= @comment.user.name %></th>
+      </tr>
+      <tr>
+        <th scope="col">Comment</th>
+        <th scope="col"><%= @comment.message %></th>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="text-center mb-5">Likes</h2>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @likes.each do |like| %>
+        <tr>
+          <td><%= like.id  %></td>
+          <td><%= like.user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Like", add_like_path(@comment), class: 'btn btn-outline-danger'%>
+</div>
