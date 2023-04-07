@@ -27,7 +27,7 @@
           <td><%= event.description  %></td>
           <td><%= event.event_date  %></td>
           <td><%= event.category.name %></td>
-          <td><%= link_to "Comments", all_comments_path(event), class:"btn btn-info" %></td>
+          <td><%= link_to "Comments", all_comments_path(event), class:"btn btn-info" %> <span class="badge bg-secondary"><%= event.comments.count %></span></td>
           <% if user_signed_in? %>
             <td><%= link_to "Enroll", events_enroll_path(event), class: 'btn btn-info'%></td>
           <% end %>
