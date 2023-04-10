@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.profile = Profile.new(name: @user.name, email: @user.email)
     if @user.save
       session[:user_id] = @user.id
       cookies[:user_id] = @user.name
