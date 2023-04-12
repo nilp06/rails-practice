@@ -52,6 +52,12 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def batch
+    Employee.find_in_batches(batch_size: 10, finish: 10) do |employee|
+      @employees = employee
+    end
+  end
+
   private
 
   def employee_params

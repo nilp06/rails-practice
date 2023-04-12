@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+50.times do |i|
+  Employee.create(first_name: "First#{i}", last_name: "Last#{i}", email: "employee#{i}@gmail.com", age: rand(20..30), salary: rand(10_000..100_000),
+                  no_of_order: rand(40..50), full_time_available: [true, false].sample)
+end
