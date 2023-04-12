@@ -1,0 +1,44 @@
+<%= form_with model: employee do |form| %>
+  <% if employee.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong><%= pluralize(@employee.errors.count, "error") %> found.</strong>
+      <ul>
+        <% employee.errors.each do |error| %>
+          <li>
+            <%= error.full_message %>
+          </li>
+        <% end %>
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <div class="mb-1">
+    <%= form.label :first_name, class: "form-label" %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "Enter First Name"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :last_name, class: "form-label" %>
+    <%= form.text_field :last_name,class: "form-control", placeholder: "Enter Last Name" %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email ,  class: "form-control", placeholder: "Enter Email ID"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :age, class: "form-label" %>
+    <%= form.number_field :age ,  class: "form-control", placeholder: "Enter Age"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :no_of_order, "Orders", class: "form-label" %>
+    <%= form.number_field :no_of_order,  class: "form-control", placeholder: "Enter No of Orders"  %>
+  </div>
+  <div class="mb-2 mt-2 form-check form-switch">
+    <%= form.check_box :full_time_available, class: "form-check-input" %>
+    <%= form.label :full_time_available, "Full Time Available", class: "form-check-label" %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :salary, class: "form-label" %>
+    <%= form.number_field :salary,  class: "form-control", placeholder: "Enter Age"  %>
+  </div>
+  <%= form.submit class:"btn btn-primary text-center"%>
+<% end %>

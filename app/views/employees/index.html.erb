@@ -1,0 +1,40 @@
+<h1 class="text-center"> Employees</h1>
+<div class="container text-center">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Orders</th>
+        <th scope="col">Availability</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td>
+            <%= employee.first_name+" "+employee.last_name %>
+          </td>
+          <td><%= employee.email  %></td>
+          <td><%= employee.no_of_order %></td>
+          <td>
+            <% if employee.full_time_available %>
+              <span class="badge bg-success">Available</span>
+            <% else %>
+              <span class="badge bg-danger">Not Available</span>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "Show", employee_path(employee), class:'btn btn-primary'%>
+            <%= link_to "Edit", edit_employee_path(employee), class: 'btn btn-info'%>
+            <%= link_to "Delete", employee_path(employee), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Add Employee", new_employee_path(), class: 'btn btn-primary'%>
+</div>
