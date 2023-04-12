@@ -46,7 +46,7 @@ class EventsController < ApplicationController
 
   def enroll
     @enroll = Enrollment.new(user_id: current_user.id, event_id: params[:id], is_owner: false)
-    if !Enrollment.where(user_id: current_user.id, event_id: params[:id]).present? && @enroll.save
+    if !@enroll.present? && @enroll.save
       flash[:success] = 'Successfully Enrolled in Event.'
     else
       flash[:danger] = 'You already enrolled in this Event.'

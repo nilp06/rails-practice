@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, flash: { success: 'Logged in successfully' }
     else
       flash[:danger] = 'Email or password is invalid.'
+      # render :new
       redirect_to new_session_path
     end
   end
