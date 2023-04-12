@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   def index
-    @employees = Employee.all
+    @employees = Employee.order(:first_name)
   end
 
   def show
@@ -41,6 +41,15 @@ class EmployeesController < ApplicationController
     @employee.destroy
 
     redirect_to employees_path, status: :see_other
+  end
+
+  def search
+    @employee = Employee.find_by(email: params[:email])
+    if @employee
+      redirect_to employee_path(@employee)
+    else
+      redirect_to employees_path, flash: { danger: 'No Employee Exist with this email.' }
+    end
   end
 
   private
