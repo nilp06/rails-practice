@@ -12,7 +12,7 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = Employee.new(employee_params)
+    @employee = Employee.find_or_create_by(employee_params)
 
     if @employee.save
       redirect_to @employee
@@ -22,7 +22,8 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-    @employee = Employee.find(params[:id])
+    @employee = Employee.find_or_initialize_by(id: params[:id])
+    redirect_to new_employee_path if @employee.email.blank?
   end
 
   def update
