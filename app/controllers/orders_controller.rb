@@ -4,11 +4,10 @@ class OrdersController < ApplicationController
     if params[:flag] == '1'
       @employee.increment!(:no_of_order)
     elsif params[:flag] == '-1'
-      params[:flag] == '0'
       @employee.decrement!(:no_of_order)
     else
-      flash[:dnager] = 'Wrong Operation.'
+      flash[:danger] = 'Wrong Operation.'
     end
-    redirect_to employees_path
+    redirect_back fallback_location: root_path
   end
 end
