@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'orders/:id/update/:flag', to: 'orders#change', as: 'order_change'
   root 'home#index'
+  get 'queries/show', to: 'queries#show', as: 'queries_show'
+  get 'queries/perform', to: 'queries#perform', as: 'queries_perform'
 end

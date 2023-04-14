@@ -5,6 +5,7 @@
       <th scope="col">Email</th>
       <th scope="col">Orders</th>
       <th scope="col">Availability</th>
+      <th scope="col">Age</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -34,6 +35,9 @@
           <% else %>
             <span class="badge bg-danger">Not Available</span>
           <% end %>
+        </td>
+        <td>
+          <%= employee.age %>
         </td>
         <td>
           <%= link_to "Show", employee_path(employee), class:'btn btn-primary'%>

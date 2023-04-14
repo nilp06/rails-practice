@@ -1,0 +1,67 @@
+<div class="container">
+  <%= form_with url: queries_perform_path(:flag),method: :get do |form| %>
+    <div class="form-check">
+      <%= form.radio_button :flag, "1",class: "form-check-input" %>
+      <%= form.label :flag, "Employees having age > 20 and < 40", class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "2",class: "form-check-input" %>
+      <%= form.label :flag, "Employees which are full_time_available", class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "3",class: "form-check-input" %>
+      <%= form.label :flag, "Employees which have exactly 5 number of orders and age > 25",class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "4",class: "form-check-input" %>
+      <%= form.label :flag, "Employees which are created before today",class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "5",class: "form-check-input" %>
+      <%= form.label :flag, "Employees which have exactly 5 number of orders Or age < 25",class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "6",class: "form-check-input" %>
+      <%= form.label :flag, "Employees in descending order by age",class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "7",class: "form-check-input" %>
+      <%= form.label :flag, "Employees having a salary > 45000",class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "8",class: "form-check-input" %>
+      <%= form.label :flag, "Employees in ascending order by number of order",class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "9",class: "form-check-input" %>
+      <%= form.label :flag, "Employees having no of orders greater than 5",class:"form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :flag, "10",class: "form-check-input" %>
+      <%= form.label :flag, "Example of reselect",class:"form-check-label" %>
+    </div>
+    <%= form.submit "Get Result",class:"btn btn-primary" %>
+  <% end %>
+  <% if @result_diff %>
+    <h1 class="text-center">Results</h1>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Age</th>
+          <th scope="col">Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @result_diff.each do |employee| %>
+          <tr>
+            <td><%= employee.age %></td>
+            <td><%= employee.salary %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% elsif @result %>
+    <h1 class="text-center">Results</h1>
+    <%= render "employees/content" , employees: @result %>
+  <% end %>
+</div>
