@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def index
-    @event = Event.find(params[:id])
-    @comments = Comment.where(event_id: params[:id])
+    @comments = Event.find(params[:id]).comments
+    @event = @comments.first.event
   end
 
   def new

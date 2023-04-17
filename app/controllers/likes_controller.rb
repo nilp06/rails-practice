@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
   def index
     @comment = Comment.find(params[:id])
-    @likes = Like.where(comment_id: params[:id])
+    @likes = @comment.likes
   end
 
   def add
