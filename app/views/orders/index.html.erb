@@ -1,0 +1,5 @@
+<div class="container">
+  <h1 class="text-center">Orders</h1>
+  <%= render "content" , orders: @orders %>
+  <%= link_to "Add Order", new_product_order_path(@product), class: 'btn btn-primary text-center'%>
+</div>

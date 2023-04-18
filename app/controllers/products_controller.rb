@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[edit show]
+  before_action :set_product, only: %i[update destroy edit show]
 
   def index
     @products = Product.all
@@ -24,8 +24,6 @@ class ProductsController < ApplicationController
   def edit; end
 
   def update
-    @product = Product.find(params[:id])
-
     if @product.update(product_params)
       redirect_to @product
     else
@@ -34,7 +32,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
 
     redirect_to products_path, status: :see_other
