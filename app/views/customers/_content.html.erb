@@ -1,0 +1,36 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customers.each do |customer| %>
+      <tr>
+        <td>
+          <%= customer.first_name %>
+        </td>
+        <td>
+          <%= customer.last_name  %>
+        </td>
+        <td>
+          <%= customer.email %>
+        </td>
+        <td>
+          <%= customer.phone_number %>
+        </td>
+        <td>
+          <%= link_to "Show", customer_path(customer), class:'btn btn-primary'%>
+          <%= link_to "Edit", edit_customer_path(customer), class: 'btn btn-info'%>
+          <%= link_to "Delete", customer_path(customer), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

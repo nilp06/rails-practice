@@ -40,6 +40,18 @@ class ProductsController < ApplicationController
     redirect_to products_path, status: :see_other
   end
 
+  def filter
+    @option = params[:flag]
+    if params[:flag] == '1'
+      @products = Product.all
+    elsif params[:flag] == '0'
+      @products = Product.unscoped.where(is_active: false)
+    else
+      @option = '0'
+      flash[:danger] = 'Something Went Wrong.'
+    end
+  end
+
   private
 
   def set_product

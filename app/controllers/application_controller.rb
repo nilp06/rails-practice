@@ -24,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def record_not_found
-    render 'public/404'
+    render 'home/404'
   end
 end

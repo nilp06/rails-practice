@@ -1,0 +1,5 @@
+<div class="container">
+  <h1 class="text-center">Customers</h1>
+  <%= render "content" , customers: @customers %>
+  <%= link_to "Add Customer", new_customer_path(), class: 'btn btn-primary text-center'%>
+</div>

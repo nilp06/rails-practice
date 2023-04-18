@@ -1,0 +1,32 @@
+<%= form_with model: customer do |form| %>
+  <% if customer.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong><%= pluralize(customer.errors.count, "error") %> found.</strong>
+      <ul>
+        <% customer.errors.each do |error| %>
+          <li>
+            <%= error.full_message %>
+          </li>
+        <% end %>
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= form.label :first_name, class: "form-label" %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "Enter First Name"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :last_name, class: "form-label" %>
+    <%= form.text_field :last_name,class: "form-control", placeholder: "Enter Last Name" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email,class: "form-control", placeholder: "Enter Email" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :phone_number, class: "form-label" %>
+    <%= form.text_field :phone_number,class: "form-control", placeholder: "Enter Phone Number" %>
+  </div>
+  <%= form.submit class:"btn btn-primary text-center" %>
+<% end %>

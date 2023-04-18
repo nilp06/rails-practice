@@ -1,0 +1,28 @@
+<h1 class="text-center">Customer</h1>
+<div class="container">
+  <table class="table table-secondary">
+    <tbody>
+      <tr>
+        <td scope="col">ID</td>
+        <td scope="col"><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <td scope="col">First Name</td>
+        <td scope="col"><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td scope="col">Last Name</td>
+        <td scope="col"><%= @customer.last_name %></td>
+      </tr>
+      <tr>
+        <td scope="col">Email</td>
+        <td scope="col"><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <td scope="col">Phone Number</td>
+        <td scope="col"><%= @customer.phone_number %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to "All Customers", customers_path,class: 'btn btn-primary m-3'%>
+</div>

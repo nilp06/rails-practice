@@ -10,6 +10,7 @@ def generate_code(number)
   Array.new(number) { charset.sample }.join
 end
 
-100.times do |_i|
-  Product.create(title: generate_code(6), description: generate_code(20), price: rand(500..700),capacity: rand(100..300))
+10.times do |_i|
+  Product.create(title: generate_code(6), description: generate_code(20), price: rand(500..700),
+                 capacity: rand(100..300), is_active: [true, false].sample, status: %i[in_stock out_of_stock coming_soon].sample)
 end
