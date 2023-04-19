@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[update destroy edit show]
 
   def index
-    @products = Product.all
+    @products = Product.includes(:orders).all
   end
 
   def show; end

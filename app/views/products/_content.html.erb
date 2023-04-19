@@ -48,7 +48,12 @@
         <%= link_to "Delete", product_path(product), data: {
                         turbo_method: :delete,
                         turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
-        <%= link_to "Orders",product_orders_path(product), class: 'btn btn-info'%>
+        <%= link_to product_orders_path(product) do%>
+          <button class="btn btn-outline-primary">
+            Orders
+            <span class="badge bg-secondary"><%= product.orders.size %></span>
+          </button>
+        <% end %>
       </td>
     </tr>
   <% end %>
