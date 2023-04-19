@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get 'queries/task1', to: 'queries#task1', as: 'task1'
   get 'queries/task2', to: 'queries#task2', as: 'task2'
   get 'queries/task3', to: 'queries#task3', as: 'task3'
+  get 'queries/task4', to: 'queries#task4', as: 'task4'
   root 'home#index'
 end

@@ -24,7 +24,6 @@ class OrdersController < ApplicationController
   def edit; end
 
   def update
-    puts '-------------hhhhhh------------------hhhhhhhh------------------------hhhhhh---------------------hhhhh---------------hhhhh---------'
     if @order.update(order_params)
       redirect_to product_order_path(@product, @order)
     else

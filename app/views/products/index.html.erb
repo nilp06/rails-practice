@@ -1,5 +1,33 @@
 <div class="container">
   <h1 class="text-center">Products</h1>
+  <div class="container">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Queries</th>
+          <th scope="col">Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>most sales product by quantity</td>
+          <td><%= link_to "Result" , task1_path, class: "btn btn-primary" %></td>
+        </tr>
+        <tr>
+          <td>most sales product by price</td>
+          <td><%= link_to "Result" , task2_path, class: "btn btn-primary" %></td>
+        </tr>
+        <tr>
+          <td>most booked order of product</td>
+          <td><%= link_to "Result" , task3_path, class: "btn btn-primary" %></td>
+        </tr>
+        <tr>
+          <td>most canceled order of product</td>
+          <td><%= link_to "Result" , task4_path, class: "btn btn-primary" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <%= render "content" , products: @products %>
   <%= link_to "Add Product", new_product_path(), class: 'btn btn-primary text-center'%>
 </div>
