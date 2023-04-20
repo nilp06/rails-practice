@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 class="text-center">Orders</h1>
+  <%= form_with url:order_filter_path, method: :get do |form| %>
+    <%= form.text_field :name, class:"form-control mb-2", placeholder:"Enter Product Name"%>
+    <%= form.number_field :start, class:"form-control mb-2", placeholder:"Lowest Product Price"%>
+    <%= form.number_field :end, class:"form-control mb-2", placeholder:"Highest Product Price"%>
+    <%= form.submit "filter", class:"btn btn-outline-success" %>
+  <% end %>
+  <%= render "content" , orders: @orders %>
+</div>

@@ -36,6 +36,9 @@
                 <%= link_to "Customers", customers_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
+                <%= link_to "Orders", order_list_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
                 <%= link_to "Filter Products", filter_products_path(flag: "1"), class: "nav-link" %>
               </li>
             <% end %>

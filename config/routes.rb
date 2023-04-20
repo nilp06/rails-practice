@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get 'filter/:flag', to: 'products#filter', on: :collection, as: 'filter'
     resources :orders
   end
+  get 'order/list', to: 'orders#list', as: 'order_list'
+  get 'order/filter', to: 'orders#filter', as: 'order_filter'
   get 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
   get 'home/index'
   get 'queries/task1', to: 'queries#task1', as: 'task1'

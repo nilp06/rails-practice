@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_product
+  before_action :set_product, except: %i[filter list]
   before_action :set_order, only: %i[update edit show destroy]
   def new
     @order = @product.orders.build
@@ -21,14 +21,24 @@ class OrdersController < ApplicationController
     @orders = @product.orders
   end
 
-  def edit; end
-
   def update
     if @order.update(order_params)
       redirect_to product_order_path(@product, @order)
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def list
+    @orders = Order.includes(:product)
+  end
+
+  def filter
+    @orders = Order.includes(:product).joins(:product)
+    @orders = @orders.merge(Product.unscoped.where('title like ?', "#{params[:name]}%")) unless params[:name].empty?
+    @orders = @orders.merge(Product.unscoped.where('price >= ?', params[:start].to_i)) unless params[:start].empty?
+    @orders = @orders.merge(Product.unscoped.where('price <= ?', params[:end].to_i)) unless params[:end].empty?
+    render 'list'
   end
 
   def destroy
