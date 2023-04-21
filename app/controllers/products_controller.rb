@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
     @products = Product.includes(:orders).all
   end
 
-  def show; end
+  def show
+    @orders = @product.orders.includes(:customer)
+  end
 
   def new
     @product = Product.new

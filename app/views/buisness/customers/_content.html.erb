@@ -5,7 +5,7 @@
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone Number</th>
-      <th scope="col">Action</th>
+      <th scope="col">Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -24,11 +24,7 @@
           <%= customer.phone_number %>
         </td>
         <td>
-          <%= link_to "Show", customer_path(customer), class:'btn btn-primary'%>
-          <%= link_to "Edit", edit_customer_path(customer), class: 'btn btn-info'%>
-          <%= link_to "Delete", customer_path(customer), data: {
-                        turbo_method: :delete,
-                        turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+          <%= link_to "Edit",edit_buisness_customer_path(customer),class: "btn btn-outline-primary" %>
         </td>
       </tr>
     <% end %>

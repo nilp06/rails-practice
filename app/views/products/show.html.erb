@@ -47,3 +47,29 @@
 </table>
 <%= link_to "All Products", products_path,class: 'btn btn-primary m-3'%>
 </div>
+<div class="container">
+  <h1 class="text-center">Orders</h1>
+  <table class="table table-primary">
+    <thead>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Status</th>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td scope="col"><%= order.customer.first_name + order.customer.last_name %></td>
+          <td scope="col"><%= order.quantity %></td>
+          <td scope="col"><%= order.total_price %></td>
+          <td><% case order.status when "booked" %>
+            <span class="badge bg-success">Booked</span>
+            <% when "canceled" %>
+            <span class="badge bg-warning">Canceled</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

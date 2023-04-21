@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :customers
+  namespace :buisness do
+    resources :customers, only: %i[new create index update edit]
+  end
   resources :users, only: %i[new create]
   resources :sessions, only: %i[new create]
   resources :products do
