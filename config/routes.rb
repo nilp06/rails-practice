@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'demo/index', to: 'demo#index', as: 'demo_index'
+    end
+  end
   namespace :buisness do
     resources :customers, only: %i[new create index update edit]
     get 'customers/:id/preview', to: 'customers#preview', as: 'customers_preview'
