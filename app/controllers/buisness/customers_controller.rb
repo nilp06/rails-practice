@@ -1,6 +1,6 @@
 module Buisness
   class CustomersController < ApplicationController
-    before_action :set_customer, only: %i[edit update]
+    before_action :set_customer, only: %i[edit update preview]
     def index
       @customers = Customer.all
     end
@@ -18,6 +18,8 @@ module Buisness
         render :new, status: :unprocessable_entity
       end
     end
+
+    def preview; end
 
     def edit; end
 
