@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :buisness do
     resources :customers, only: %i[new create index update edit]
     get 'customers/:id/preview', to: 'customers#preview', as: 'customers_preview'
+    delete 'customers/:id/delete_customer', to: 'customers#destroy', as: 'customers_delete'
+    get 'customers/search', to: 'customers#search', as: 'customers_search'
   end
   resources :users, only: %i[new create]
   resources :sessions, only: %i[new create]

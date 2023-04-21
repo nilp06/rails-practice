@@ -1,5 +1,11 @@
 <div class="container">
   <h1 class="text-center">Customers</h1>
+  <%= form_with url: buisness_customers_search_path, method: :get do |form| %>
+    <%= form.text_field :name, class:"form-control mb-2", placeholder:"Enter Customer Name"%>
+    <%= form.submit "Search", class:"btn btn-outline-success" %>
+  <% end %>
+  <%= render "content" , customers: @customers %>
+  <%= link_to "Add Customer", new_buisness_customer_path(), class: 'btn btn-primary text-center'%>
   <div class="container">
     <table class="table table-hover table-striped">
       <thead>
@@ -28,6 +34,4 @@
       </tbody>
     </table>
   </div>
-  <%= render "content" , customers: @customers %>
-  <%= link_to "Add Customer", new_buisness_customer_path(), class: 'btn btn-primary text-center'%>
 </div>

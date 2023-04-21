@@ -1,6 +1,6 @@
 module Buisness
   class CustomersController < ApplicationController
-    before_action :set_customer, only: %i[edit update preview]
+    before_action :set_customer, only: %i[edit update preview destroy]
     def index
       @customers = Customer.all
     end
@@ -19,9 +19,21 @@ module Buisness
       end
     end
 
+    def search
+      @customers = Customer.where('first_name like ?', "#{params[:name]}%")
+
+      render 'index'
+    end
+
     def preview; end
 
     def edit; end
+
+    def destroy
+      @customer.destroy
+
+      redirect_to action: :index, status: :see_other
+    end
 
     def update
       if @customer.update(customer_params)
