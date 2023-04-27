@@ -4,4 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum :role, %i[admin merchant]
+  has_many :orders, dependent: :destroy
 end

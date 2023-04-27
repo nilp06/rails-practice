@@ -13,6 +13,11 @@
         <li class="nav-item">
           <%= link_to "Products", products_path, class: "nav-link"%>
         </li>
+        <% if !is_admin? %>
+          <li class="nav-item">
+            <%= link_to "Orders", all_orders_path, class: "nav-link"%>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
