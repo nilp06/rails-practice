@@ -1,0 +1,36 @@
+<div class="container text-center">
+  <%= render "search" %>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Owner Name</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Event Date</th>
+        <th scope="col">Category</th>
+        <% if user_signed_in? %>
+          <th>Enroll</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.id  %></td>
+          <td><%= event.owner_name %></td>
+          <td>
+            <%= event.name %>
+          </td>
+          <td><%= event.description  %></td>
+          <td><%= event.event_date  %></td>
+          <td><%= event.category.name %></td>
+          <% if user_signed_in? %>
+            <td><%= link_to "Enroll", events_enroll_path(event), class: 'btn btn-info'%></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Add Event", new_event_path(), class: 'btn btn-primary'%>
+</div>

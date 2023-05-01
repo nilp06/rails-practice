@@ -1,0 +1,35 @@
+<h1 class="text-center">Your Events</h1>
+<div class="container text-center">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Event Date</th>
+        <th scope="col">Category</th>
+        <th scope="col">Edit</th>
+        <th scope="Delete">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @enrollments.each do |e| %>
+        <tr>
+          <td><%= e.event.id  %></td>
+          <td>
+            <%= link_to e.event.name, event_path(e.event)%>
+          </td>
+          <td><%= e.event.description  %></td>
+          <td><%= e.event.event_date  %></td>
+          <td><%= e.event.category.name %></td>
+          <td><%= link_to "Edit", edit_event_path(e.event), class: 'btn btn-warning'%></td>
+          <td><%= link_to "Delete", event_path(e.event), data: {
+                        turbo_method: :delete, 
+                        turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Add Event", new_event_path(), class: 'btn btn-primary'%>
+</div>

@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Add Comment</h2>
+  <%= form_with url: create_comment_path(@event) do |form| %>
+    <div class="mb-3">
+      <%= form.text_field :message,class: "form-control", placeholder: "Add comment message here" %>
+    </div>
+    <%= form.submit "Add Comment", class:"btn btn-primary text-center" %>
+  <% end %>
+</div>

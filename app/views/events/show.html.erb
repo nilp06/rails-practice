@@ -1,0 +1,31 @@
+<div class="container text-center">
+  <table class="table table-secondary m-5">
+    <tbody>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col"><%= @event.id %></th>
+      </tr>
+      <tr>
+        <th scope="col">Owner Name</th>
+        <th scope="col"><%= @event.owner_name %></th>
+      </tr>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col"><%= @event.name %></th>
+      </tr>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col"><%= @event.description %></th>
+      </tr>
+      <tr>
+        <th scope="col">Event Date</th>
+        <th scope="col"><%= @event.event_date %></th>
+      </tr>
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col"><%= @event.category.name %></th>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to "All Events", events_path, class: 'btn btn-primary m-3'%>
+</div>

@@ -1,0 +1,51 @@
+<div class="container text-center">
+  <h2>Event Details</h2>
+  <table class="table table-secondary mb-5">
+    <tbody>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col"><%= @event.id %></th>
+      </tr>
+      <tr>
+        <th scope="col">Owner Name</th>
+        <th scope="col"><%= @event.owner_name %></th>
+      </tr>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col"><%= @event.name %></th>
+      </tr>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col"><%= @event.description %></th>
+      </tr>
+      <tr>
+        <th scope="col">Event Date</th>
+        <th scope="col"><%= @event.event_date %></th>
+      </tr>
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col"><%= @event.category.name %></th>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="text-center mb-5">Comments</h2>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Message</th>
+        <th scope="col">Likes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.name  %></td>
+          <td><%= comment.message %></td>
+          <td><%= link_to "Like", add_like_path(comment), class:"btn btn-danger me-1" %><%= link_to "All Like", all_likes_path(comment), class:"btn btn-danger ml-1" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Add Comment", new_comment_path(@event), class: 'btn btn-primary'%>
+</div>

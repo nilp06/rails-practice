@@ -1,0 +1,5 @@
+<%= form_with url: event_filter_path,method: :get do |form| %>
+  <%= form.label :Category,class:"form-label" %>
+  <%= form.collection_select :id, Category.order(:id), :id, :name, {},class: "form-select" %>
+  <%= form.submit "Filter" ,class:"btn btn-primary text-center" %>
+<% end %>
