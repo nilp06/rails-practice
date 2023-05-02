@@ -9,4 +9,5 @@ class Employee < ApplicationRecord
   validates :birth_date, presence: true
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   has_and_belongs_to_many :hobbies, dependent: :destroy
+  has_many :addresses, dependent: :destroy
 end
