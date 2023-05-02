@@ -1,0 +1,34 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Address</th>
+      <th scope="col">Mobile Number</th>
+      <th scope="col">Birth Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% employees.each do |employee| %>
+      <tr>
+        <td>
+          <%= employee.name %>
+        </td>
+        <td><%= employee.email  %></td>
+        <td><%= employee.gender %></td>
+        <td><%= employee.address %></td>
+        <td><%= employee.mobile_number %></td>
+        <td><%= employee.birth_date %></td>
+        <td><%= link_to "Show", employee_path(employee), class:"btn btn-info" %>
+          <%= link_to "Edit", edit_employee_path(employee), class:"btn btn-warning" %>
+          <%= link_to "Delete", employee_path(employee), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"}, 
+          class: 'btn btn-danger'%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
