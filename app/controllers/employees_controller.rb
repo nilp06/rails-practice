@@ -12,7 +12,10 @@ class EmployeesController < ApplicationController
 
   def edit; end
 
-  def show; end
+  def show
+    @hobbies = @employee.hobbies
+    @addresses = @employee.addresses
+  end
 
   def update
     if @employee.update(employee_paramas)
@@ -48,7 +51,7 @@ class EmployeesController < ApplicationController
 
   def employee_paramas
     params.require(:employee).permit(:name, :email, :password, :password_confirmation, :gender, :address,
-                                     :mobile_number, :document, :birth_date, hobby_ids: [''], addresses_attributes: %i[house_name street_name road])
+                                     :mobile_number, :document, :birth_date, hobby_ids: [], addresses_attributes: %i[id house_name street_name road])
   end
 
   def set_employee

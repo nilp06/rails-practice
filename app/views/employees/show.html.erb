@@ -26,6 +26,46 @@
         <td>Birth Date</td>
         <td><%= @employee.birth_date %></td>
       </tr>
+      <tr>
+        <td>Document</td>
+        <td> <%= link_to "Show", @employee.document.url,class:"btn btn-primary",target:"_blank" %></td>
+      </tr>
     </tbody>
   </table>
+  <%= link_to "Edit",edit_employee_path(@employee),class:"btn btn-primary" %>
+  <%= link_to "Delete", employee_path(@employee), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"}, 
+          class: 'btn btn-secondary'%>
+  <% if @hobbies.present? %>
+    <h1 class="text-center">Hobbies</h1>
+    <table class="table table-hover table-striped">
+      <tbody>
+        <% @hobbies.each do |hobby| %>
+          <tr>
+            <td class="text-center"><%= hobby.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <% if @addresses.present? %>
+    <h1 class="text-center">Addresses</h1>
+    <table class="table table-hover table striped">
+      <thead>
+        <th>House Name</th>
+        <th>Street Name</th>
+        <th>Road</th>
+      </thead>
+      <tbody>
+        <% @addresses.each do |address| %>
+          <tr>
+            <td><%= address.house_name %></td>
+            <td><%= address.street_name %></td>
+            <td><%= address.road %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
