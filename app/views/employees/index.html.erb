@@ -1,0 +1,7 @@
+<div class="contianer">
+  <h1 class="text-center">Employees</h1>
+  <div class="container">
+    <%= render "content", employees: @employees %>
+    <%= link_to "Add Employee",new_employee_path,class:"btn btn-primary" %>
+  </div>
+</div>

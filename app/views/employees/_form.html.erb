@@ -1,0 +1,79 @@
+<%= form_with model: employee do |form| %>
+  <% if employee.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong><%= pluralize(employee.errors.count, "error") %> found.</strong>
+      <ul>
+        <% employee.errors.each do |error| %>
+          <li>
+            <%= error.full_message %>
+          </li>
+        <% end %>
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <div class="mb-1">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter Name"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control", placeholder: "Enter Email"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control", placeholder: "Enter Password"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :password_confirmation, class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :gender, class: "form-label" %>
+    <% Employee.genders.keys.each do |gender| %>
+      <%= form.radio_button :gender, gender %>
+      <%= form.label gender.to_sym %>
+    <% end %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :address, class: "form-label" %>
+    <%= form.text_area :address, class: "form-control", placeholder: "Enter Address"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :mobile_number, class: "form-label" %>
+    <%= form.text_field :mobile_number, class: "form-control", placeholder: "Enter Mobile Number"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :birth_date, class: "form-label" %>
+    <%= form.date_field :birth_date, class: "form-control", placeholder: "Enter Birth Date"  %>
+  </div>
+  <div class="mb-1">
+    <%= form.label :document, class: "form-label" %>
+    <%= form.file_field :document,class:"form-control"%>
+  </div>
+  <div class="mb-1">
+    <%= form.label :hobby_ids,"Hobbies", class: "form-label" %> <br>
+    <%= form.collection_check_boxes  :hobby_ids, Hobby.order(:name), :id, :name do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.label class:"form-check-label"%>
+        <%= b.check_box class:"form-check-input" %>
+      </div>
+    <% end %>
+  </div>
+  <%= form.label :address, class: "form-label" %>
+  <%= form.fields_for :addresses do |address_form| %>
+    <div class="mb-1">
+      <%= address_form.label :house_name, class:"form-label" %>
+      <%= address_form.text_field :house_name, class:"form-control" %>
+    </div>
+    <div class="mb-1">
+      <%= address_form.label :street_name, class:"form-label" %>
+      <%= address_form.text_field :street_name, class:"form-control" %>
+    </div>
+    <div class="mb-1">
+      <%= address_form.label :road, class:"form-label" %>
+      <%= address_form.text_field :road, class:"form-control" %>
+    </div>
+  <% end %>
+  <%= form.submit class:"btn btn-primary text-center"%>
+<% end %>
