@@ -60,5 +60,20 @@
       </div>
     <% end %>
   </div>
+  <%= form.label :address, class: "form-label" %>
+  <%= form.fields_for :addresses do |address_form| %>
+    <div class="mb-1">
+      <%= address_form.label :house_name, class:"form-label" %>
+      <%= address_form.text_field :house_name, class:"form-control" %>
+    </div>
+    <div class="mb-1">
+      <%= address_form.label :street_name, class:"form-label" %>
+      <%= address_form.text_field :street_name, class:"form-control" %>
+    </div>
+    <div class="mb-1">
+      <%= address_form.label :road, class:"form-label" %>
+      <%= address_form.text_field :road, class:"form-control" %>
+    </div>
+  <% end %>
   <%= form.submit class:"btn btn-primary text-center"%>
 <% end %>

@@ -1,4 +1,8 @@
 <div class="container">
   <h1 class="text-center">Employees</h1>
-  <%= render "content" ,employees: @employees %>
+  <% if @employees %>
+    <%= render "content", employees: @employees %>
+  <% else %>
+    <h1>No Records is found.</h1>
+  <% end %>
 </div>

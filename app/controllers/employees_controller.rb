@@ -7,6 +7,7 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
+    @employee.addresses.build
   end
 
   def edit; end
@@ -38,6 +39,8 @@ class EmployeesController < ApplicationController
   end
 
   def search
+    return unless params[:query].present?
+
     @employees = Employee.where('name like ? ', "#{params[:query]}%")
   end
 
