@@ -13,16 +13,22 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :sessions, only: %i[new create]
   resources :products do
-    get 'filter/:flag', to: 'products#filter', on: :collection, as: 'filter'
+    collection do
+      get 'filter/:flag', to: 'products#filter', as: 'filter'
+      get 'order/list', to: 'orders#list', as: 'order_list'
+      get 'order/filter', to: 'orders#filter', as: 'order_filter'
+    end
     resources :orders
   end
-  get 'order/list', to: 'orders#list', as: 'order_list'
-  get 'order/filter', to: 'orders#filter', as: 'order_filter'
+
   get 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
   get 'home/index'
-  get 'queries/task1', to: 'queries#task1', as: 'task1'
-  get 'queries/task2', to: 'queries#task2', as: 'task2'
-  get 'queries/task3', to: 'queries#task3', as: 'task3'
-  get 'queries/task4', to: 'queries#task4', as: 'task4'
+  scope '/queries' do
+    get 'task1', to: 'queries#task1', as: 'task1'
+    get 'task2', to: 'queries#task2', as: 'task2'
+    get 'task3', to: 'queries#task3', as: 'task3'
+    get 'task4', to: 'queries#task4', as: 'task4'
+  end
+
   root 'home#index'
 end
