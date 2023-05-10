@@ -1,4 +1,4 @@
-<%= form_with model: order,url: product_orders_path(@product),method: :post do |form| %>
+<%= form_with model: order ,url: action do |form| %>
   <% if order.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <strong><%= pluralize(order.errors.count, "error") %> found.</strong>
