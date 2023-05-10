@@ -1,0 +1,28 @@
+<%= turbo_frame_tag "mainframe" do %>
+  <div class="container">
+    <h1 class="text-center">Show Post</h1>
+    <div class="container">
+      <h1><%= @post.title %></h1>
+      <h2><%= @post.description %></h2>
+      <%= link_to "Back", posts_path, class:"btn btn-primary m-1" %>
+      <%= render "links" ,post: @post  %>
+      <%= link_to "Add Comment", post_comments_path, class:"btn btn-primary m-1" %>
+      <% if @post.comments.any? %>
+        <h1 class="text-center">Comments</h1>
+        <% @post.comments.each do |comment| %>
+          <div class="table-responsive">
+            <table class="table table-primary">
+              <tbody>
+                <tr class="">
+                  <div class="m-1 border-1 border-primary">
+                    <%= comment.message %>
+                  </div>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
