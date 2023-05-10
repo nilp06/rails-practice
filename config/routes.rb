@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get 'like'
       get 'dislike'
     end
-    resources :comments, only: [:create]
+    resources :comments
   end
   get 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
   get 'home/index'

@@ -1,27 +1,27 @@
 class CommentsController < ApplicationController
-  before_action :set_post
+  before_action :set_post, only: %i[new create]
 
   def index; end
 
-  def show; end
-
-  def create
-    @comment = @post.comments.create(message: params[:comment][:message], user_id: current_user.id)
-    flash[:message] = 'Something went wrong.' unless @comment.save
-    redirect_back fallback_location: root_path
+  def new
+    @comment = @post.comments.build
   end
 
-  def show; end
+  def create
+    @comment = @post.comments.create(comment_params)
+    @comment.user = current_user
+    if @comment.save
+      redirect_to post_path(@post)
+    else
+      redirect_to new_post_comments_path
+    end
+  end
 
   def edit; end
 
   def destroy; end
 
   private
-
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
 
   def set_post
     @post = Post.find(params[:post_id])

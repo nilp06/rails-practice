@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy like dislike]
-  helper_method :user_liked?
 
   def index
     @posts = Post.includes(:comments, :likes).all
