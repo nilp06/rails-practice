@@ -4,7 +4,6 @@
     <h4><%= post.description %></h4>
     <%= link_to "Show", post_path(post),data: { turbo_frame:"mainframe" }, class:"btn btn-primary m-1" %>
     <%= render "links" ,post: post  %>
-    <!--
     <h2>likes: <%= get_likes(post) %>
       <% if !user_liked_post?(post) %>
         <%= link_to like_post_path(post),data: { "turbo-frame": post } ,class:"btn btn-primary"  do %>
@@ -16,15 +15,5 @@
         <% end %>
       <% end %>
     </h2>
-    -->
-    <!-- > <% post.comments.each do |comment| %>
-      <p>
-        <%= comment.message %>
-      </p>
-    <% end %> 
-    <%= form_with model: get_comment_object(post),data: {"turbo-frame": post } ,url: post_comments_path(post) do |form|%>
-      <%= form.text_field :message,class: "form-cotrol" %>
-      <%= form.submit "Add Comment",class:"btn btn-primary" %>
-    <% end %> -->
   </div>
 <% end %>

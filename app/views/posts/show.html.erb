@@ -21,7 +21,10 @@
                     <%= comment.user.name %>
                   </h4>
                   <% if is_comment_owner?(comment) %>
-                    <%= link_to "Edit", edit_comment_path(comment),class:"btn btn-primary" %>
+                    <div class="d-flex flex-row">
+                      <%= link_to "Edit", edit_post_comment_path(@post,comment), class:"btn btn-primary me-3" %>
+                      <%= link_to "Delete", post_comment_path(@post,comment), data:{ turbo_method: "delete", turbo_frame: "mainframe" }, class:"btn btn-primary me-1" %>
+                    </div>
                   <% end %>
                 </div>
               </tbody>

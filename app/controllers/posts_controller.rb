@@ -2,17 +2,17 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy like dislike]
 
   def index
-    @posts = Post.includes(:comments, :likes).all
+    @posts = Post.includes(:likes).all
   end
 
   def like
     @post.likes.create!(user_id: current_user.id)
-    redirect_back fallback_location: root_path
+    redirect_to action: :index
   end
 
   def dislike
     @post.likes.find_by(user_id: current_user.id).destroy
-    redirect_back fallback_location: root_path
+    redirect_to action: :index
   end
 
   def new
