@@ -1,0 +1,6 @@
+<%= form_with model: tweet do |form| %>
+  <div class="mb-3">
+    <%= form.text_field :message, class:"form-control",required: true %>
+  </div>
+  <%= form.submit class:"btn btn-primary" %>
+<% end %>

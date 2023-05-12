@@ -1,34 +1,22 @@
 <div class="container">
   <h1 class="text-center">Register User</h1>
-  <% if @user.errors.any? %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong><%= pluralize(@user.errors.count, "error") %> found.</strong>
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li>
-            <%= error.full_message %>
-          </li>
-        <% end %>
-      </ul>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% end %>
+  <%= render "shared/errors" , user: @user %>
   <%= form_with(model: @user,data: {turbo: false}) do |form| %>
     <div class="mb-3">
       <%= form.label :name, class: "form-label" %>
-      <%= form.text_field :name, class: "form-control", placeholder: "Enter Name"  %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Enter Name", required: true  %>
     </div>
     <div class="mb-3">
       <%= form.label :email, class: "form-label" %>
-      <%= form.text_field :email, class: "form-control", placeholder: "Enter Email"  %>
+      <%= form.text_field :email, class: "form-control", placeholder: "Enter Email",required: true  %>
     </div>
     <div class="mb-3">
       <%= form.label :password, class: "form-label" %>
-      <%= form.password_field :password, class: "form-control", placeholder: "Enter Password"  %>
+      <%= form.password_field :password, class: "form-control", placeholder: "Enter Password",required: true  %>
     </div>
     <div class="mb-3">
       <%= form.label :password_confirmation, class: "form-label" %>
-      <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"  %>
+      <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password",required: true  %>
     </div>
     <%= form.submit "Register User", class:"btn btn-primary text-center"%>
   <% end %>
