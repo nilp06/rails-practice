@@ -12,6 +12,7 @@ gem 'sprockets-rails'
 # Use sqlite3 as the database for Active Record
 gem 'bootstrap'
 gem 'devise'
+gem 'devise-bootstrap-views', '~> 1.0'
 gem 'pg'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
