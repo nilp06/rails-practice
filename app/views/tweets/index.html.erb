@@ -1,0 +1,15 @@
+<div class="container">
+  <table class="table table-primary">
+    <tbody>
+      <% @tweets.each do |tweet| %>
+        <div class="p-2 m-1 bg-secondary">
+          <h2><%= tweet.message %></h2>
+          <h4><%= tweet.user.name %></h4>
+          <%= link_to "Edit", edit_tweet_path(tweet), class:"btn btn-primary"  %>
+          <%= link_to "Delete", tweet_path(tweet), data:{ turbo_method:"delete" }, class:"btn btn-primary"  %>
+        </div>
+      <% end %>
+    </tbody>
+    <%= link_to "Add New", new_tweet_path ,class:"btn btn-primary text-center" %>
+  </table>
+</div>
