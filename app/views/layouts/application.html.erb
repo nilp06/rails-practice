@@ -1,16 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsPractice</title>
+    <title>Rails Practice</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <div class="container-fluid">
+        <%= link_to "Action Mailer Basics and File Upload", root_path,class:"navbar-brand" %>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+            <% if !user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "Register", new_user_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Login", new_session_path, class:"nav-link"  %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Logout", logout_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Users", users_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <% if flash.any? %>
+        <% flash.each do |name, msg| -%>
+          <div class="alert alert-<%= name %> alert-dismissible fade show" role="alert">
+            <%= msg%>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
