@@ -1,0 +1,45 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Prodcut</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Product Price</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.each do |order| %>
+      <tr>
+        <td>
+          <%= order.product.title %>
+        </td>
+        <td>
+          <%= order.quantity  %>
+        </td>
+        <td>
+          <%= order.product.price %>
+        </td>
+        <td>
+          <%= order.total_price %>
+        </td>
+        <td>
+          <% case order.status 
+		   when "booked" %>
+          <span class="badge bg-success">Booked</span>
+          <% when "canceled" %>
+          <span class="badge bg-warning">Canceled</span>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "Show", product_order_path(order.product,order), class:'btn btn-primary'%>
+        <%= link_to "Edit", edit_product_order_path(order.product,order), class: 'btn btn-info'%>
+        <%= link_to "Delete", product_order_path(order.product,order), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

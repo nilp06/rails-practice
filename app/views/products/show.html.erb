@@ -1,0 +1,75 @@
+<h1 class="text-center">Product</h1>
+<div class="container">
+  <table class="table table-secondary">
+    <tbody>
+      <tr>
+        <td scope="col">ID</td>
+        <td scope="col"><%= @product.id %></td>
+      </tr>
+      <tr>
+        <td scope="col">Title</td>
+        <td scope="col"><%= @product.title %></td>
+      </tr>
+      <tr>
+        <td scope="col">Description</td>
+        <td scope="col"><%= @product.description %></td>
+      </tr>
+      <tr>
+        <td scope="col">Price</td>
+        <td scope="col"><%= @product.price %></td>
+      </tr>
+      <tr>
+        <td scope="col">Capacity</td>
+        <td scope="col"><%= @product.capacity %></td>
+      </tr>
+      <tr>
+        <td scope="col">Active</td>
+        <td scope="col">
+          <% if @product.is_active %>
+            <span class="badge bg-success">Active</span>
+          <% else %>
+            <span class="badge bg-danger">Not Active</span>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td scope="col">Status</td>
+        <td scope="col"><% case @product.status 
+		   when "in_stock" %>
+          <span class="badge bg-success">In Stock</span>
+          <% when "out_of_stock" %>
+          <span class="badge bg-warning">Out of Stock</span>
+          <% when "coming_soon" %>
+          <span class="badge bg-info">Coming Soon</span>
+        <% end %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "All Products", products_path,class: 'btn btn-primary m-3'%>
+</div>
+<div class="container">
+  <h1 class="text-center">Orders</h1>
+  <table class="table table-primary">
+    <thead>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Status</th>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td scope="col"><%= order.customer.first_name + order.customer.last_name %></td>
+          <td scope="col"><%= order.quantity %></td>
+          <td scope="col"><%= order.total_price %></td>
+          <td><% case order.status when "booked" %>
+            <span class="badge bg-success">Booked</span>
+            <% when "canceled" %>
+            <span class="badge bg-warning">Canceled</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
