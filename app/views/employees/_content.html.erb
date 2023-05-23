@@ -1,0 +1,52 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Orders</th>
+      <th scope="col">Availability</th>
+      <th scope="col">Age</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% employees.each do |employee| %>
+      <tr>
+        <td>
+          <%= employee.first_name+" "+employee.last_name %>
+        </td>
+        <td><%= employee.email  %></td>
+        <td>
+          <%= link_to orders_increment_employee_path(employee) do%>
+            <span>
+              <i class="bi bi-arrow-up-circle-fill"></i>
+            </span>
+          <% end %>
+          <%= employee.no_of_order %>
+          <%= link_to orders_decrement_employee_path(employee) do%>
+            <span>
+              <i class="bi bi-arrow-down-circle-fill"></i>
+            </span>
+          <% end %>
+        </td>
+        <td>
+          <% if employee.full_time_available %>
+            <span class="badge bg-success">Available</span>
+          <% else %>
+            <span class="badge bg-danger">Not Available</span>
+          <% end %>
+        </td>
+        <td>
+          <%= employee.age %>
+        </td>
+        <td>
+          <%= link_to "Show", employee_path(employee), class:'btn btn-primary'%>
+          <%= link_to "Edit", edit_employee_path(employee), class: 'btn btn-info'%>
+          <%= link_to "Delete", employee_path(employee), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

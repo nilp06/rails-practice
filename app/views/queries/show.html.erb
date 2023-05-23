@@ -1,0 +1,17 @@
+<div class="container">
+  <%= form_with url: queries_perform_path(:flag),method: :get do |form| %>
+    <% ApplicationHelper::Queries_strings.each_with_index do |query,index| %>
+      <div class="form-check">
+        <%= form.radio_button :flag, index.to_s, class: "form-check-input" %>
+        <%= form.label :flag, query, class:"form-check-label" %>
+      </div>
+    <% end %>
+    <%= form.submit "Get Result",class:"btn btn-primary" %>
+  <% end %>
+  <% if @result_diff %>
+    <%= render "result", {result: @result_diff} %>
+  <% elsif @result %>
+    <h1 class="text-center">Results</h1>
+    <%= render "employees/content" , employees: @result %>
+  <% end %>
+</div>

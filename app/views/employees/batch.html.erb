@@ -1,0 +1,13 @@
+<h1 class="text-center"> Employees</h1>
+<div class="container text-center">
+  <%= form_with url: search_path, method: :get, class: "row mb-4 mt-4" do |form|  %>
+    <div class="col-sm-10">
+      <%= form.text_field :email, class: "form-control", placeholder: "Enter Email" %>
+    </div>
+    <div class="col-sm-2 text-start">
+      <%= form.submit "Search", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <%= render "content" , employees: @employees %>
+  <%= link_to "Add Employee", new_employee_path(), class: 'btn btn-primary'%>
+</div>
