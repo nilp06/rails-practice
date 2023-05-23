@@ -17,13 +17,13 @@
         </td>
         <td><%= employee.email  %></td>
         <td>
-          <%= link_to order_change_path(employee,flag: "1") do%>
+          <%= link_to orders_increment_employee_path(employee) do%>
             <span>
               <i class="bi bi-arrow-up-circle-fill"></i>
             </span>
           <% end %>
           <%= employee.no_of_order %>
-          <%= link_to order_change_path(employee,flag: "-1") do%>
+          <%= link_to orders_decrement_employee_path(employee) do%>
             <span>
               <i class="bi bi-arrow-down-circle-fill"></i>
             </span>

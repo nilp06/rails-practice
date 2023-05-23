@@ -1,0 +1,17 @@
+<h1 class="text-center">Results</h1>
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Age</th>
+      <th scope="col">Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% result.each do |employee| %>
+      <tr>
+        <td><%= employee.age %></td>
+        <td><%= employee.salary %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
