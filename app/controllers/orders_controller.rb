@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
   end
 
   def filter
-    @orders = Order.includes(:product).joins(:product)
+    @orders = Order.joins(:product)
     @orders = @orders.merge(Product.unscoped.where('title like ?', "#{params[:name]}%")) unless params[:name].empty?
     @orders = @orders.merge(Product.unscoped.where('price >= ?', params[:start].to_i)) unless params[:start].empty?
     @orders = @orders.merge(Product.unscoped.where('price <= ?', params[:end].to_i)) unless params[:end].empty?

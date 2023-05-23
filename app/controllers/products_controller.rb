@@ -38,15 +38,8 @@ class ProductsController < ApplicationController
   end
 
   def filter
-    @option = params[:flag]
-    if params[:flag] == '1'
-      @products = Product.all
-    elsif params[:flag] == '0'
-      @products = Product.unscoped.where(is_active: false)
-    else
-      @option = '0'
-      flash[:danger] = 'Something Went Wrong.'
-    end
+    puts params
+    @products = Product.where(is_active: params[:filter][:inactive])
   end
 
   private
@@ -56,6 +49,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:title, :description, :price, :capacity, :is_active, :status)
+    params.require(:product).permit(:title, :description, :price, :capacity, :is_active, :status, filter: {})
   end
 end
