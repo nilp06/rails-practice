@@ -38,12 +38,6 @@ class ProductsController < ApplicationController
 
   private
 
-  def check_admin?
-    return if is_admin?
-
-    redirect_to products_path, flash: { danger: 'You have not Acess to this page.' }
-  end
-
   def set_product
     @product = Product.find(params[:id])
   end

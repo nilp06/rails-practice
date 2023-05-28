@@ -22,4 +22,11 @@ class ApplicationController < ActionController::Base
       'application'
     end
   end
+
+  def check_admin?
+    return if is_admin?
+
+    redirect_to products_path, flash: { danger: 'You have not Acess to this page.' }
+  end
+  
 end
