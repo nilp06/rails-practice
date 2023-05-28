@@ -1,0 +1,28 @@
+<%= form_with model: product  do |f| %>
+  <% if product.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong><%= pluralize(@product.errors.count, "error") %> found.</strong>
+      <ul>
+        <% product.errors.each do |error| %>
+          <li>
+            <%= error.full_message %>
+          </li>
+        <% end %>
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= f.label :title, class: "form-label" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Enter title" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :description, class: "form-label" %>
+    <%= f.text_area :description, class: "form-control", placeholder: "Enter Description" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :price, class: "form-label" %>
+    <%= f.number_field :price, class: "form-control", placeholder: "Enter Price" %>
+  </div>
+  <%= f.submit "Create Product", class: 'btn btn-primary' %>
+<% end %>
