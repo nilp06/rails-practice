@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "mainframe" do %>
   <div class="container">
     <h1>Edit Comment</h1>
-    <%= render "form", {comment: @comment, post: @post , action: post_comment_path(@post,@comment)} %>
+    <%= render "form", {comment: @comment, post: @post , post_comment_link: post_comment_path(@post,@comment)} %>
   </div>
 <% end %>

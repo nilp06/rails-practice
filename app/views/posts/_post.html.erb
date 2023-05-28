@@ -4,15 +4,9 @@
     <h4><%= post.description %></h4>
     <%= link_to "Show", post_path(post),data: { turbo_frame:"mainframe" }, class:"btn btn-primary m-1" %>
     <%= render "links" ,post: post  %>
-    <h2>likes: <%= get_likes(post) %>
-      <% if !user_liked_post?(post) %>
-        <%= link_to like_post_path(post),data: { "turbo-frame": post } ,class:"btn btn-primary"  do %>
-          Like
-        <% end %>
-      <% elsif %>
-        <%= link_to dislike_post_path(post), data: {"turbo-frame": post }, class:"btn btn-primary" do  %>
-          Dislike
-        <% end %>
+    <h2>likes: <%= post_likes_count(post) %>
+      <%= link_to like_dislikes_paths(post), data: {"turbo-frame": post }, class:"btn btn-primary" do  %>
+        <%= like_dislikes_button_text(post) %>
       <% end %>
     </h2>
   </div>

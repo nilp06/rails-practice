@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy like dislike]
 
   def index
-    @posts = Post.includes(:likes).all
+    @posts = Post.includes(:likes, :comments)
   end
 
   def like
@@ -29,7 +29,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @comments = @post.comments.includes(:user)
+  end
 
   def edit; end
 

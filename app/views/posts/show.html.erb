@@ -7,9 +7,9 @@
       <%= link_to "Back", posts_path, class:"btn btn-primary m-1" %>
       <%= render "links" ,post: @post  %>
       <%= link_to "Add Comment", new_post_comment_path(@post), data:{ turbo_frame: "mainframe" }, class:"btn btn-primary m-1" %>
-      <% if @post.comments.any? %>
+      <% if @comments.any? %>
         <h1 class="text-center">Comments</h1>
-        <% @post.comments.each do |comment| %>
+        <% @comments.each do |comment| %>
           <div class="table-responsive">
             <table class="table table-primary">
               <tbody>
