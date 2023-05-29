@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       cookies[:user_id] = @user.name
       redirect_to root_path, flash: { success: 'Registration successfully' }
     else
-      # render :new
       redirect_to new_session_path
     end
   end

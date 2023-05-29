@@ -30,7 +30,7 @@
   </div>
   <div class="mb-3">
     <%= form.label :status, class: "form-label" %>
-    <%= form.select :status, ProductsHelper::StatusChoices,{} ,class: "form-select"  %>
+    <%= form.select :status, Product.statuses.map{ |k,v| [k,k] }, {},class: "form-select"  %>
   </div>
   <div class="mb-2 mt-2 form-check form-switch">
     <%= form.check_box :is_active, class: "form-check-input" %>

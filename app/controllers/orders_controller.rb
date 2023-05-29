@@ -5,7 +5,9 @@ class OrdersController < ApplicationController
     @order = @product.orders.build
   end
 
-  def show; end
+  def show
+    @customer = @order.customer
+  end
 
   def create
     @order = @product.orders.create(order_params)
@@ -34,10 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def filter
-    @orders = Order.joins(:product)
-    @orders = @orders.merge(Product.unscoped.where('title like ?', "#{params[:name]}%")) unless params[:name].empty?
-    @orders = @orders.merge(Product.unscoped.where('price >= ?', params[:start].to_i)) unless params[:start].empty?
-    @orders = @orders.merge(Product.unscoped.where('price <= ?', params[:end].to_i)) unless params[:end].empty?
+    filtered_orders(params)
     render 'list'
   end
 
@@ -48,6 +47,25 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def find_orders
+    @orders = Order.includes(:product)
+  end
+
+  def filter_by_name(name)
+    @orders = @orders.merge(Product.unscoped.where('title like ?', "#{name}%")) unless name.empty?
+  end
+
+  def filter_by_price_range(start_price, end_price)
+    @orders = @orders.merge(Product.unscoped.where('price >= ?', start_price.to_i)) unless start_price.empty?
+    @orders = @orders.merge(Product.unscoped.where('price <= ?', end_price.to_i)) unless end_price.empty?
+  end
+
+  def filtered_orders(params)
+    find_orders
+    filter_by_name(params[:name])
+    filter_by_price_range(params[:start], params[:end])
+  end
 
   def set_order
     @order = Order.find(params[:id])

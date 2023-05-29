@@ -4,7 +4,7 @@
     <tbody>
       <tr>
         <td scope="col">Title</td>
-        <td scope="col"><%= @order.product.title %></td>
+        <td scope="col"><%= @product.title %></td>
       </tr>
       <tr>
         <td scope="col">Quantity</td>
@@ -12,7 +12,7 @@
       </tr>
       <tr>
         <td scope="col">Price</td>
-        <td scope="col"><%= @order.product.price %></td>
+        <td scope="col"><%= @product.price %></td>
       </tr>
       <tr>
         <td scope="col">Capacity</td>
@@ -38,19 +38,19 @@
     <tbody>
       <tr>
         <td scope="col">First Name</td>
-        <td scope="col"><%= @order.customer.first_name %></td>
+        <td scope="col"><%= @customer.first_name %></td>
       </tr>
       <tr>
         <td scope="col">Last Name</td>
-        <td scope="col"><%= @order.customer.last_name %></td>
+        <td scope="col"><%= @customer.last_name %></td>
       </tr>
       <tr>
         <td scope="col">Email</td>
-        <td scope="col"><%= @order.customer.email %></td>
+        <td scope="col"><%= @customer.email %></td>
       </tr>
       <tr>
         <td scope="col">Phone Number</td>
-        <td scope="col"><%= @order.customer.phone_number %></td>
+        <td scope="col"><%= @customer.phone_number %></td>
       </tr>
     </tbody>
   </table>

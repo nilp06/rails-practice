@@ -1,19 +1,17 @@
 class QueriesController < ApplicationController
   def task1
-    @result = Customer.joins(:orders).group(:id).order('sum(quantity) desc').limit(3)
+    @result = Customer.orders_sum_by_customer('quantity')
   end
 
   def task2
-    @result = Customer.joins(:orders).group(:id).order('sum(total_price) desc').limit(3)
+    @result = Customer.orders_sum_by_customer('total_price')
   end
 
   def task3
-    @result = Customer.joins(:orders).where(orders: { status: 'booked' }).group(:first_name,
-                                                                                :last_name).count.sort_by { |_, v| v }.reverse.first(5)
+    @result = Customer.orders_by_status('booked')
   end
 
   def task4
-    @result = Customer.joins(:orders).where(orders: { status: 'canceled' }).group(:first_name,
-                                                                                  :last_name).count.sort_by { |_, v| v }.reverse.first(5)
+    @result = Customer.orders_by_status('canceled')
   end
 end
