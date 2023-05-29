@@ -1,0 +1,30 @@
+<div class="container">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @result.each do |r| %>
+        <tr>
+          <td>
+            <%= r.first_name %>
+          </td>
+          <td>
+            <%= r.last_name  %>
+          </td>
+          <td>
+            <%= r.email %>
+          </td>
+          <td>
+            <%= r.phone_number %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

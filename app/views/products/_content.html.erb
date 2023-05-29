@@ -1,0 +1,61 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">Active</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.each do |product| %>
+      <tr>
+        <td>
+          <%= product.title %>
+        </td>
+        <td>
+          <%= product.description  %>
+        </td>
+        <td>
+          <%= product.price %>
+        </td>
+        <td>
+          <%= product.capacity %>
+        </td>
+        <td>
+          <% if product.is_active %>
+            <span class="badge bg-success">Active</span>
+          <% else %>
+            <span class="badge bg-danger">Not Active</span>
+          <% end %>
+        </td>
+        <td>
+          <% case product.status 
+		   when "in_stock" %>
+          <span class="badge bg-success">In Stock</span>
+          <% when "out_of_stock" %>
+          <span class="badge bg-warning">Out of Stock</span>
+          <% when "coming_soon" %>
+          <span class="badge bg-info">Coming Soon</span>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "Show", product_path(product), class:'btn btn-primary'%>
+        <%= link_to "Edit", edit_product_path(product), class: 'btn btn-info'%>
+        <%= link_to "Delete", product_path(product), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"}, class: 'btn btn-danger'%>
+        <%= link_to product_orders_path(product) do%>
+          <button class="btn btn-outline-primary">
+            Orders
+            <span class="badge bg-secondary"><%= product.orders.size %></span>
+          </button>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

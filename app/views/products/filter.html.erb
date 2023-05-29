@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="d-inline-flex">
+    <p> Filter By Is Active </p>
+    <%= link_to "False", filter_products_path(params.permit.merge(filter: {inactive: false})), class: 'btn btn-primary text-center'%>
+    <%= link_to "True", filter_products_path(params.permit.merge(filter: {inactive: true})), class: 'btn btn-primary text-center'%>
+  </div>
+  <h1 class="text-center">Prodcuts</h1>
+  <% if @products %>
+    <%= render "content" , products: @products %>
+  <% end %>
+  <%= link_to "Add Product", new_product_path, class: 'btn btn-primary text-center'%>
+</div>
