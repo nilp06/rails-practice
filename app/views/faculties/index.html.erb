@@ -18,7 +18,7 @@
           <td><%= faculty.id  %></td>
           <td>
             <%= link_to faculty.first_name, faculty_path(faculty)%>
-          </td> 
+          </td>
           <td><%= faculty.last_name  %></td>
           <td><%= faculty.dob  %></td>
           <td><%= faculty.email  %></td>
@@ -31,5 +31,5 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Add Faclty", new_faculty_path(),class: 'btn btn-primary'%>
+  <%= link_to "Add Faclty", new_faculty_path,class: 'btn btn-primary'%>
 </div>

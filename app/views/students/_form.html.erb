@@ -1,5 +1,5 @@
 <%= form_with model: student do |form| %>
-  <% if student.errors.any? %> 
+  <% if student.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <strong><%= pluralize(@student.errors.count, "error") %> found.</strong>
       <ul>
@@ -38,7 +38,7 @@
   </div>
   <div class="mb-3">
     <%= form.label :department, class: "form-label" %>
-    <%= form.select :department, StudentsHelper::DepartmentChoices,{} ,class: "form-select"  %>
+    <%= form.select :department, Student.department_choices,{} ,class: "form-select"  %>
   </div>
   <div class="mb-3 form-check">
     <%= form.check_box :terms_of_usage,  class: "form-check-input"%>
