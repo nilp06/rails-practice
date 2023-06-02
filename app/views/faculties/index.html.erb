@@ -1,0 +1,35 @@
+<h1 class="text-center"> Faculties</h1>
+<div class="container text-center">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Birth Date</th>
+        <th scope="Delete">Email</th>
+        <th scope="col">Edit</th>
+        <th scope="Delete">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @faculties.each do |faculty| %>
+        <tr>
+          <td><%= faculty.id  %></td>
+          <td>
+            <%= link_to faculty.first_name, faculty_path(faculty)%>
+          </td>
+          <td><%= faculty.last_name  %></td>
+          <td><%= faculty.dob  %></td>
+          <td><%= faculty.email  %></td>
+          <td><%= link_to "Edit", edit_faculty_path(faculty),class: 'btn btn-warning'%></td>
+          <td><%= link_to "Delete", faculty_path(faculty), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"},class: 'btn btn-danger'%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Add Faclty", new_faculty_path,class: 'btn btn-primary'%>
+</div>

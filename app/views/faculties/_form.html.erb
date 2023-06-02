@@ -1,0 +1,44 @@
+<%= form_with model: faculty do |form| %>
+  <% if faculty.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong><%= pluralize(@faculty.errors.count, "error") %> found.</strong>
+      <ul>
+        <% faculty.errors.each do |error| %>
+          <li>
+            <%= error.full_message %>
+          </li>
+        <% end %>
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= form.label :first_name, class: "form-label" %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "Enter First Name"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :last_name, class: "form-label" %>
+    <%= form.text_field :last_name,class: "form-control", placeholder: "Enter Last Name" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email ,  class: "form-control", placeholder: "Enter Email ID"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :phone_number, class: "form-label" %>
+    <%= form.text_field :phone_number,  class: "form-control", placeholder: "Enter Phone Number"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :dob, "Date of Birth", class: "form-label" %>
+    <%= form.date_field :dob,  class: "form-control", placeholder: "Enter DOB"  %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :department, class: "form-label" %>
+    <%= form.select :department, Faculty.department_choices, {}, class: "form-select" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :designation, class: "form-label" %>
+    <%= form.select :designation, Faculty.department_choices, {}, class: "form-select" %>
+  </div>
+  <%= form.submit class:"btn btn-primary text-center"%>
+<% end %>
