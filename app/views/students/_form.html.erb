@@ -1,17 +1,5 @@
 <%= form_with model: student do |form| %>
-  <% if student.errors.any? %> 
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong><%= pluralize(@student.errors.count, "error") %> found.</strong>
-      <ul>
-        <% student.errors.each do |error| %>
-          <li>
-            <%= error.full_message %>
-          </li>
-        <% end %>
-      </ul>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  <% end %>
+  <%= render "shared/errors", object: student %>
   <div class="mb-3">
     <%= form.label :first_name, class: "form-label" %>
     <%= form.text_field :first_name, class: "form-control", placeholder: "Enter First Name"  %>
@@ -38,7 +26,7 @@
   </div>
   <div class="mb-3">
     <%= form.label :department, class: "form-label" %>
-    <%= form.select :department, StudentsHelper::DepartmentChoices,{} ,class: "form-select"  %>
+    <%= form.select :department, department_choices,{} ,class: "form-select"  %>
   </div>
   <div class="mb-3 form-check">
     <%= form.check_box :terms_of_usage,  class: "form-check-input"%>

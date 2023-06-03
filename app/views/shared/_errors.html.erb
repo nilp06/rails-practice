@@ -1,8 +1,8 @@
-<% if faculty.errors.any? %>
+<% if object.errors.any? %>
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong><%= pluralize(@faculty.errors.count, "error") %> found.</strong>
+    <strong><%= pluralize(@object.errors.count, "error") %> found.</strong>
     <ul>
-      <% faculty.errors.each do |error| %>
+      <% object.errors.each do |error| %>
         <li>
           <%= error.full_message %>
         </li>

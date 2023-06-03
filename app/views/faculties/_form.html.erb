@@ -34,11 +34,11 @@
   </div>
   <div class="mb-3">
     <%= form.label :department, class: "form-label" %>
-    <%= form.select :department, FacultiesHelper::DepartmentChoices, {}, class: "form-select" %>
+    <%= form.select :department, department_choices, {}, class: "form-select" %>
   </div>
   <div class="mb-3">
     <%= form.label :designation, class: "form-label" %>
-    <%= form.select :designation, FacultiesHelper::DesignationChoices, {}, class: "form-select" %>
+    <%= form.select :designation, designation_choices, {}, class: "form-select" %>
   </div>
   <%= form.submit class:"btn btn-primary text-center"%>
 <% end %>
