@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: ENV['email']
+  default from: ENV['gmail_user']
   layout 'custom', only: [:email_changed]
   def welcome_mail
     @user = params[:user]

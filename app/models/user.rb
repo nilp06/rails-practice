@@ -13,8 +13,7 @@ class User < ApplicationRecord
   private
 
   def send_welcome_mail
-    UserMailer.with(user: self, f: 'text').welcome_mail.deliver_now
-    UserMailer.with(user: self, f: 'html').welcome_mail.deliver_now
+    SendEmailsJob.perform_now(self)
   end
 
   def send_email_changed
