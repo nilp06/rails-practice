@@ -1,0 +1,7 @@
+<% if cookies[:user_name] %>
+  <h1 class="text-center">Welcome <%= cookies[:user_name] %></h1>
+<% else %>
+  <h1 class="text-center">
+    Please Login to proceed further.
+  </h1>
+<% end %>

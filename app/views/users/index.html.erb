@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class="text-center">All Users</h1>
+  <table class="table table-primary">
+    <thead>
+      <th>Photo</th>
+      <th>Name</th>
+      <th>Email</th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= image_tag(user.image.url, alt: "hit",width: 40) %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
