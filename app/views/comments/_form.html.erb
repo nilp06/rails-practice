@@ -1,0 +1,7 @@
+<%= form_with model: @comment, url: post_comment_link do |form| %>
+  <div class="mb-1">
+    <%= form.label :message, class:"form-label" %>
+    <%= form.text_field :message, class:"form-control" %>
+  </div>
+  <%= form.submit data:{ turbo_frame: "mainframe" }, class:"btn btn-primary"%>
+<% end %>

@@ -1,0 +1,6 @@
+<div class="d-flex flex-row m-1">
+  <% if is_owner?(post) %>
+    <%= link_to "Edit", edit_post_path(post), data: { turbo_frame: "mainframe" }, class:"btn btn-primary me-1" %>
+    <%= link_to "Delete", post_path(post), data:{ turbo_method: "delete",turbo_frame: "mainframe" }, class:"btn btn-primary me-1" %>
+  <% end %>
+</div>

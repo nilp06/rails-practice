@@ -1,0 +1,13 @@
+<%= turbo_frame_tag post do %>
+  <div class="bg-white m-1 p-1 border border-primary border-1">
+    <h2><%= post.title %></h2>
+    <h4><%= post.description %></h4>
+    <%= link_to "Show", post_path(post),data: { turbo_frame:"mainframe" }, class:"btn btn-primary m-1" %>
+    <%= render "links" ,post: post  %>
+    <h2>likes: <%= post_likes_count(post) %>
+      <%= link_to like_dislikes_paths(post), data: {"turbo-frame": post }, class:"btn btn-primary" do  %>
+        <%= like_dislikes_button_text(post) %>
+      <% end %>
+    </h2>
+  </div>
+<% end %>
